@@ -9,6 +9,8 @@
 import UIKit
 
 
+
+
 class MoviesViewController: UITableViewController {
     
     var movies: [Movie] = [
@@ -25,19 +27,27 @@ class MoviesViewController: UITableViewController {
         Movie(title: "Arkansas", director: "Clark Duke", actor: "Liam Hemsworth, Vince Vaughn, Clark Duke", year: 2020, image: "Arkansas", rating: 5.9),
         Movie(title: "Avengers: Endgame", director: "Anthony Russo, Joe Russo", actor: "Robert Downey Jr., Scarlett Johansson, Chris Evans", year: 2019, image: "AvengersEndgame", rating: 7.9)
     ]
+
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return movies.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell1", for: indexPath)
+        let data = movies[indexPath.row]
+        
+        cell.textLabel?.text = data.title
+        cell.detailTextLabel?.text = data.director
+//        cell.imageView?.image = data.image
+//        cell.Label
         return cell
 
     }
